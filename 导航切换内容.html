@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul,li{
+        list-style: none;
+    }
+    .main-content{
+        display: block;
+        margin: 50px;
+        width: 500px;
+        height: 100px;
+    }
+    .left-content{
+        width: 100px;
+        height: 100px;
+        float: left;
+    }
+    .left-content .item{
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .left-content .active{
+        background-color: coral;
+    }
+    .right-content{
+        display: inline-block;
+        /* float:left; */
+        text-align: center;
+        background-color: cornflowerblue;
+        width: 400px;
+        height: 100%;
+        
+    }
+    
+   
+    
+</style>
+<body>
+    <div class="main-content">
+        <!-- 左导航开始 -->
+        <div class="left-content">
+            <ul>
+                <li class="item active">1</li>
+                <li class="item">2</li>
+                <li class="item">3</li>
+            </ul>
+        </div>
+        <!-- 左导航结束 -->
+        <!-- 右边内容切换 -->
+        <div class="right-content">
+            <div>1</div>
+            <div style="display: none;">2</div>
+            <div style="display: none;">3</div>
+        </div>
+        <!-- 右边切换内容结束 -->
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(".item").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+             var index=$(this).index();
+            // var index=$(this).prevAll().length;
+            $(".right-content div").eq(index).show().siblings().hide();
+
+            // $(".right-content div").eq(index).fadeIn().siblings().hide();
+           
+        })
+    </script>
+</body>
+</html>
